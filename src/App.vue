@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import 'ant-design-vue/dist/antd.css';
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
