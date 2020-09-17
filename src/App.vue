@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <a-button type="primary">Button</a-button>
+    <a-range-picker  />
   </div>
 </template>
 
 <script>
-import 'ant-design-vue/dist/antd.css';
-import HelloWorld from './components/HelloWorld.vue'
+// import 'ant-design-vue/dist/antd.css';
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  // components: {
+  //   HelloWorld
+  // }
 }
 </script>
 
