@@ -2,30 +2,25 @@
   <a-row class="arow--center">
     <a-col :span="6">
       <a-form layout="vertical" >
-        <a-form-item>
+        <a-form-item label="Usuário">
           <a-input 
-            v-decorator="[
-              'userName',
-              { rules: [{ required: true, message: 'Please input your username!' }] },
-            ]"
-            placeholder="Username"
+            v-model="userName"
+            placeholder="admin"
+            label
           />
         </a-form-item>
-        <a-form-item>
+        <a-form-item label="Senha">
           <a-input
-            v-decorator="[
-              'password',
-              { rules: [{ required: true, message: 'Please input your Password!' }] },
-            ]"
+            v-model="password"
             type="password"
-            placeholder="Password"
+            placeholder="admin"
           >
             <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
           </a-input>
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" html-type="submit" >
-            Log in
+          <a-button type="primary" html-type="submit" @click="submit()">
+            Entrar
           </a-button>
         </a-form-item>
       </a-form>
@@ -34,13 +29,28 @@
 </template>
 
 <script>
+//Store
+import { mapActions } from "vuex";
+
 export default {
     name: 'login',
     data: () => ({
-
+      userName: null,
+      password: null,      
     }),
     methods: {
-      
+      ...mapActions('authenticateStore', ['TO_LOG']),
+      submit() {
+        const authenticateStore = {
+          id: 1,
+          name: 'Admin',
+          lastName: '',
+        }
+        if(this.userName == 'admin' && this.password == 'admin') {
+          this.TO_LOG(authenticateStore)
+          this.$router.push('/inicio')
+        }
+      }
     }
 }
 </script>
