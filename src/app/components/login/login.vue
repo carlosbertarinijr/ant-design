@@ -58,6 +58,9 @@ export default {
       controlRegister: false,
       loadingSend: false
     }),
+    created() {
+      this.fetchUser(null)
+    },
     methods: {
       ...mapActions('authenticateStore', ['fetchUser']),
       submit() {
