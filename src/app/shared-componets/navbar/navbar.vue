@@ -3,7 +3,7 @@
         <a-layout-sider v-if="user.loggedIn" :collapsed="collapsedBool">
             <div class="logo" />
             <a-menu
-                theme="dark"
+                theme="dark" 
                 mode="inline"
             >
               <a-sub-menu :title="collapsedBool ? 'sbn1' : 'nav 1'" >
@@ -16,7 +16,7 @@
                 <a-menu-item> subnav 2 - item - 2 </a-menu-item>
                 <a-menu-item> subnav 2 - item - 3 </a-menu-item>
               </a-sub-menu>
-              <a-sub-menu :title="collapsedBool ? 'sbn3' : 'nav 2'">
+              <a-sub-menu :title="collapsedBool ? 'sbn3' : 'nav 3'">
                 <a-menu-item> subnav 3 - item - 1 </a-menu-item>
                 <a-menu-item> subnav 3 - item - 2 </a-menu-item>
                 <a-menu-item> subnav 3 - item - 3 </a-menu-item>
