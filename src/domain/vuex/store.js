@@ -8,20 +8,18 @@ import createPersistedState from "vuex-persistedstate";
 
 //Modules
 import authenticateStore from "./modules/authenticate-store";
-import routeStore from "./modules/route-store";
 
 export default new Vuex.Store( {
-    plugins: [createPersistedState( {
+    plugins: [
+        createPersistedState( {
                 paths: [
                     'authenticateStore',
-                    'routeStore',
                 ]
             }
         )
     ],
     modules: {
         authenticateStore,
-        routeStore
     },
     mutations: {
     },
