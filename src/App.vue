@@ -1,10 +1,19 @@
 <template>
   <a-config-provider>
     <div id="app">
-      <router-view/>
-  </div>
+      <Navbar/>      
+    </div>
   </a-config-provider>
 </template>
+
+<script>
+//Components
+import Navbar from "@/app/shared-componets/navbar/navbar"
+
+export default {
+  components: {Navbar},
+}
+</script>
 
 <style>
 #app {

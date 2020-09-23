@@ -26,7 +26,7 @@
           </a-input>
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" html-type="submit" @click="submit()">
+          <a-button type="primary" html-type="submit" @click="submit()" :loading="loadingSend">
             {{controlRegister ? 'Salvar' : 'Entrar'}}
           </a-button>
           <a-button type="default" html-type="submit" style="margin-left: 10px" @click="startRegister()" v-if="!controlRegister">
@@ -56,35 +56,46 @@ export default {
       name: '',
       //Control
       controlRegister: false,
+      loadingSend: false
     }),
     methods: {
       ...mapActions('authenticateStore', ['fetchUser']),
       submit() {
         if(this.controlRegister && this.hasEntriesValid()) { //registrar
+          this.loadingSend = true
           firebase
-          .auth()
+          .auth()            
             .createUserWithEmailAndPassword(this.email, this.password)
             .then(data => {              
               data.user
-              .updateProfile({
+              .updateProfile({ //seta displayname no back
                 displayName: this.name
               })
-              .then(() => {});              
+              .then(() => {
+                this.controlRegister = false
+                this.email = null
+                this.password  = null
+                this.name = null
+                this.loadingSend = false
+              });
             })
             .catch(err => {
+              this.loadingSend = false
               this.error = err.message;
             });
         }else { //Logar
+          this.loadingSend = true
           firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then(data => {
-            this.fetchUser(data.user)
-            console.log(data)
-            this.$router.push('/inicio')
+            this.loadingSend = false
+            this.fetchUser(data.user)            
+            this.$router.push('/inicio')            
           })
           .catch(err => {
             this.error = err.message;
+            this.loadingSend = false
           });
         }
       },
