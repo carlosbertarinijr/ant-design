@@ -12,7 +12,6 @@ let router = new Router({
 
 //Controle geral das rotas e autenticação
 router.beforeEach((to, from, next) => {
-  store.commit('routeStore/set_actualRoute',to.path.substring(1))
   if(to.matched.some(record => record.meta.requiresAuth)) {
     //eslint-disable-next-line
     if( store.state.authenticateStore.user.loggedIn ) {

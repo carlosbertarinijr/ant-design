@@ -17,11 +17,13 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Glyphicons Halflings';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-weight: 500;
+  letter-spacing: 1.2px;
 }
 
 #nav {
